@@ -1,7 +1,7 @@
 /**
 # grunt-apidox
 
-[Grunt](http://gruntjs.com/) plugin to generate node.js API markdown using [apidox](https://github.com/codeactual/apidox).
+[Grunt](http://gruntjs.com/) plugin to generate node.js API markdown using [apidox](https://github.com/codeactual/apidox). [![Build Status](https://travis-ci.org/davedoesdev/grunt-apidox.png)](https://travis-ci.org/davedoesdev/grunt-apidox)
 
 Example:
 
