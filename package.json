@@ -38,6 +38,7 @@
   },
   "devDependencies": {
     "grunt": "~0.4.1",
+    "grunt-cli": "~0.1.9",
     "grunt-jslint": "~0.2.6",
     "grunt-cafe-mocha": "~0.1.5",
     "sinon": "~1.7.2",
