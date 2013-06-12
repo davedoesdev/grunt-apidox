@@ -21,7 +21,7 @@
   }],
   "main": "Gruntfile.js",
   "scripts": {
-    "test": "grunt test"
+    "test": "grunt lint test"
   },
   "directories": {
     "test": "test",
