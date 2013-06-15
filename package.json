@@ -1,7 +1,7 @@
 {
   "name": "grunt-apidox",
   "description": "Grunt task to generate node.js module API markdown using apidox",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "homepage": "https://github.com/davedoesdev/grunt-apidox",
   "author": {
     "name": "David Halls",
@@ -15,10 +15,12 @@
   "bugs": {
     "url": "https://github.com/davedoesdev/grunt-apidox/issues"
   },
-  "licenses": [{
-    "type": "MIT",
-    "url": "https://github.com/davedoesdev/grunt-apidox/blob/master/LICENCE"
-  }],
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/davedoesdev/grunt-apidox/blob/master/LICENCE"
+    }
+  ],
   "main": "Gruntfile.js",
   "scripts": {
     "test": "grunt lint test"
