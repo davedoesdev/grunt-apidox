@@ -5,7 +5,7 @@
   "homepage": "https://github.com/davedoesdev/grunt-apidox",
   "author": {
     "name": "David Halls",
-    "email": "dave@davedoesdev.com>",
+    "email": "dave@davedoesdev.com",
     "url": "http://www.davedoesdev.com"
   },
   "repository": {
@@ -13,11 +13,11 @@
     "url": "https://github.com/davedoesdev/grunt-apidox.git"
   },
   "bugs": {
-    "url": "http://github.com/davedoesdev/grunt-apidox/issues"
+    "url": "https://github.com/davedoesdev/grunt-apidox/issues"
   },
   "licenses": [{
     "type": "MIT",
-    "url": "https://github.com/davedoesdev/grunt-apidox/blob/master/LICENSE-MIT"
+    "url": "https://github.com/davedoesdev/grunt-apidox/blob/master/LICENCE"
   }],
   "main": "Gruntfile.js",
   "scripts": {
@@ -34,7 +34,7 @@
     "markdown"
   ],
   "dependencies": {
-    "apidox": "~0.3.3"
+    "apidox": "~0.3.4"
   },
   "devDependencies": {
     "grunt": "~0.4.1",
