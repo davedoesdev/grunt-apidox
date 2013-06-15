@@ -18,7 +18,8 @@ module.exports = function (grunt)
 
         apidox: {
             input: 'tasks/apidox.js',
-            output: 'README.md'
+            output: 'README.md',
+            fullSourceDescription: true
         }
     });
 
