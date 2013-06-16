@@ -18,6 +18,12 @@ grunt.loadNpmTasks('grunt-apidox');
 grunt.registerTask('docs', 'apidox');
 ```
 
+## Installation
+
+```shell
+npm install grunt-apidox
+```
+
 ## Configuration
 
 Use the `apidox` property in your Grunt config. You can supply the following options:
