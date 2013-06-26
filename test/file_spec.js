@@ -324,4 +324,33 @@ describe('files', function ()
 
         done();
     });
+
+    it('should not read or write if no input specified', function (done)
+    {
+        grunt.config('apidox', [{
+            output: 'README.md'
+        }]);
+
+        run();
+
+        expect(fs.readFileSync.called).to.equal(false);
+        expect(grunt.file.write.called).to.equal(false);
+
+        done();
+    });
+
+    it('should not read or write if input does not exist', function (done)
+    {
+        grunt.config('apidox', [{
+            input: '*.foobar',
+            output: 'README.md'
+        }]);
+
+        run();
+
+        expect(fs.readFileSync.called).to.equal(false);
+        expect(grunt.file.write.called).to.equal(false);
+
+        done();
+    });
 });

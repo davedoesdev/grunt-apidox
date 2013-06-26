@@ -1,5 +1,5 @@
 /**
-# grunt-apidox &nbsp;&nbsp;&nbsp;[![Build Status](https://travis-ci.org/davedoesdev/grunt-apidox.png)](https://travis-ci.org/davedoesdev/grunt-apidox)
+# grunt-apidox &nbsp;&nbsp;&nbsp;[![Build Status](https://travis-ci.org/davedoesdev/grunt-apidox.png)](https://travis-ci.org/davedoesdev/grunt-apidox)  [![Coverage Status](https://coveralls.io/repos/davedoesdev/grunt-apidox/badge.png?branch=master)](https://coveralls.io/r/davedoesdev/grunt-apidox?branch=master)
 
 [Grunt](http://gruntjs.com/) plugin to generate node.js API markdown using [apidox](https://github.com/codeactual/apidox). 
 
@@ -108,6 +108,15 @@ grunt test
 grunt lint
 ```
 
+## Code Coverage
+
+```javascript
+grunt coverage
+```
+
+[Instanbul](http://gotwarlost.github.io/istanbul/) results are available [here](http://htmlpreview.github.io/?https://github.com/davedoesdev/grunt-apidox/blob/master/coverage/lcov-report/index.html).
+
+Coveralls page is [here](https://coveralls.io/r/davedoesdev/grunt-apidox).
 */
 
 /*jslint node: true */
