@@ -1,4 +1,4 @@
-# grunt-apidox &nbsp;&nbsp;&nbsp;[![Build Status](https://travis-ci.org/davedoesdev/grunt-apidox.png)](https://travis-ci.org/davedoesdev/grunt-apidox)  [![Coverage Status](https://coveralls.io/repos/davedoesdev/grunt-apidox/badge.png?branch=master)](https://coveralls.io/r/davedoesdev/grunt-apidox?branch=master)
+# grunt-apidox &nbsp;&nbsp;&nbsp;[![Build Status](https://travis-ci.org/davedoesdev/grunt-apidox.png)](https://travis-ci.org/davedoesdev/grunt-apidox)  [![Coverage Status](https://coveralls.io/repos/davedoesdev/grunt-apidox/badge.png?branch=master)](https://coveralls.io/r/davedoesdev/grunt-apidox?branch=master) [![NPM version](https://badge.fury.io/js/grunt-apidox.png)](http://badge.fury.io/js/grunt-apidox)
 
 [Grunt](http://gruntjs.com/) plugin to generate node.js API markdown using [apidox](https://github.com/codeactual/apidox). 
 
