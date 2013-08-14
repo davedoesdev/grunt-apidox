@@ -35,7 +35,7 @@ Use the `apidox` property in your Grunt config. You can supply the following opt
 
 - `inputTitle` (optional, string |`false`): By default, `apidox` includes a line in the markdown saying it was generated from the `input` file. Set `inputTitle` to `false` to prevent this, or set it to a string to change the text.
 
-- `fullSourceDescription` (optional, boolean): By default, `apidox` includes only the first sentence of the first comment in the output. Set `fullSourceDescription` to `true` to include all of the first comment in the output.
+- `fullSourceDescription` (optional, boolean): By default, `apidox` includes only the first paragraph of the first comment in the output. Set `fullSourceDescription` to `true` to include all of the first comment in the output.
 
 - `sections` (optional, object): Use this to divide the table of contents into sections. Each key in `sections` is the name of the first function in a section. The value is the markdown to insert before the link to the function in the table of contents.
 

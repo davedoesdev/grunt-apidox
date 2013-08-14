@@ -1,5 +1,7 @@
 /**
-description
+This is a description. This is the rest of the first paragraph.
+
+This is the rest of the description.
 */
 
 /**
