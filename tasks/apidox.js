@@ -36,6 +36,10 @@ Use the `apidox` property in your Grunt config. You can supply the following opt
 
 - `inputTitle` (optional, string |`false`): By default, `apidox` includes a line in the markdown saying it was generated from the `input` file. Set `inputTitle` to `false` to prevent this, or set it to a string to change the text.
 
+- `fullSourceDescription` (optional, boolean): By default, `apidox` includes only the first sentence of the first comment in the output. Set `fullSourceDescription` to `true` to include all of the first comment in the output.
+
+- `sections` (optional, object): Use this to divide the table of contents into sections. Each key in `sections` is the name of the first function in a section. The value is the markdown to insert before the link to the function in the table of contents.
+
 ## More Examples
 
 Write to a subdirectory:
@@ -92,6 +96,18 @@ apidox: {
 }
 ```
 
+Split the table of contents into two sections, `foo` and `bar`:
+
+```javascript
+apidox: {
+    input: 'index.js',
+    sections: {
+        someFunction: '##foo',
+        someOtherFunction: '##bar'
+    }
+}
+```
+
 ## Licence
 
 [MIT](LICENCE)
@@ -129,7 +145,7 @@ module.exports = function (grunt)
 {
     function convert(input, output, options)
     {
-        var opt, dox = apidox.create();
+        var opt, dox = apidox.create(), out, section, re;
 
         /*jslint forin: true */
         for (opt in options)
@@ -142,7 +158,20 @@ module.exports = function (grunt)
         dox.set('output', output);
         dox.parse();
 
-        grunt.file.write(output, dox.convert());
+        out = dox.convert();
+
+        if (options.sections)
+        {
+            /*jslint forin: true */
+            for (section in options.sections)
+            {
+                re = new RegExp('- <a name="toc_' + section.toLowerCase() + '.*</a>\\[' + section.toLowerCase() + '\\]');
+                out = out.replace(re, options.sections[section] + '\n$&');
+            }
+            /*jslint forin: false */
+        }
+
+        grunt.file.write(output, out);
     }
 
     function readFiles(files)
