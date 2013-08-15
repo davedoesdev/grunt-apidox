@@ -40,6 +40,8 @@ Use the `apidox` property in your Grunt config. You can supply the following opt
 
 - `sections` (optional, object): Use this to divide the table of contents into sections. Each key in `sections` is the name of the first function in a section. The value is the markdown to insert before the link to the function in the table of contents.
 
+  Use a key with the empty string to insert markdown after the table of contents.
+
 ## More Examples
 
 Write to a subdirectory:
@@ -162,11 +164,20 @@ module.exports = function (grunt)
 
         if (options.sections)
         {
+            if ('' in options.sections)
+            {
+                re = new RegExp('<a name="tableofcontents"></a>\\n\\n(- [^\\n]*\\n)*\\n');
+                out = out.replace(re, '$&' + options.sections[''] + '\n\n');
+            }
+
             /*jslint forin: true */
             for (section in options.sections)
             {
-                re = new RegExp('- <a name="toc_' + section.toLowerCase() + '.*</a>\\[' + section.toLowerCase() + '\\]');
-                out = out.replace(re, options.sections[section] + '\n$&');
+                if (section)
+                {
+                    re = new RegExp('- <a name="toc_' + section.toLowerCase() + '.*</a>\\[' + section.toLowerCase() + '\\]');
+                    out = out.replace(re, options.sections[section] + '\n$&');
+                }
             }
             /*jslint forin: false */
         }

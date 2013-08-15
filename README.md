@@ -39,6 +39,8 @@ Use the `apidox` property in your Grunt config. You can supply the following opt
 
 - `sections` (optional, object): Use this to divide the table of contents into sections. Each key in `sections` is the name of the first function in a section. The value is the markdown to insert before the link to the function in the table of contents.
 
+  Use a key with the empty string to insert markdown after the table of contents.
+
 ## More Examples
 
 Write to a subdirectory:
