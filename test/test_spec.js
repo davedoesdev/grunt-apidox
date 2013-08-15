@@ -377,6 +377,27 @@ describe('files', function ()
         expect(grunt.file.write.calledWith(path.resolve('index.md'), sinon.match(/\n\nafter toc\n\n# index\(\)\n/)), 'write index.md containing after toc').to.equal(true);
     });
 
+    it('should write section headers even if no post-toc content specified', function ()
+    {
+        grunt.config('apidox',
+        {
+            input: 'index.js',
+            sections: {
+                index: '##foo',
+                index2: '##foo2'
+            }
+        });
+
+        run();
+
+        expect(fs.readFileSync.calledOnce, 'read once').to.equal(true);
+        expect(fs.readFileSync.calledWith('index.js'), 'read index.js').to.equal(true);
+
+        expect(grunt.file.write.calledOnce, 'write once').to.equal(true);
+        expect(grunt.file.write.calledWith(path.resolve('index.md'), sinon.match(/\n##foo\n/)), 'write index.md containing ##foo').to.equal(true);
+        expect(grunt.file.write.calledWith(path.resolve('index.md'), sinon.match(/\n##foo2\n/)), 'write index.md containing ##foo2').to.equal(true);
+    });
+
     it('should include summary description', function ()
     {
         grunt.config('apidox', 'index.js');
