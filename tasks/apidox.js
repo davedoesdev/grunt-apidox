@@ -42,6 +42,8 @@ Use the `apidox` property in your Grunt config. You can supply the following opt
 
   Use a key with the empty string to insert markdown after the table of contents.
 
+- `extraHeadingLevels` (optional, integer): By default, `apidox` generates level 1 headings for each API entry. Set `extraHeadingLevels` if you want to change this. For example, to generate level 3 headings, set `extraHeadingLevels` to 2.
+
 ## More Examples
 
 Write to a subdirectory:
@@ -149,6 +151,11 @@ module.exports = function (grunt)
     {
         var opt, dox = apidox.create(), out, section, re;
 
+        grunt.util.hooker.hook(dox, 'h', function (level, text)
+        {
+            return grunt.util.hooker.filter(this, [(options.extraHeadingLevels || 0) + level, text]);
+        });
+
         /*jslint forin: true */
         for (opt in options)
         {
@@ -164,7 +171,7 @@ module.exports = function (grunt)
 
         if (options.sections)
         {
-            if ('' in options.sections)
+            if (options.sections[''] !== undefined)
             {
                 re = new RegExp('<a name="tableofcontents"></a>\\n\\n(- [^\\n]*\\n)*\\n');
                 out = out.replace(re, '$&' + options.sections[''] + '\n\n');

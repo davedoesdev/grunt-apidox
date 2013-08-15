@@ -406,4 +406,21 @@ describe('files', function ()
         expect(grunt.file.write.calledOnce, 'write once').to.equal(true);
         expect(grunt.file.write.calledWith(path.resolve('index.md'), sinon.match(/^This is a description\. This is the rest of the first paragraph\.\n\nThis is the rest of the description\.\n\n_Source:/)), 'write index.md containing summary description').to.equal(true);
     });
+    
+    it('should add extra heading levels', function ()
+    {
+        grunt.config('apidox',
+        {
+            input: 'index.js',
+            extraHeadingLevels: 2
+        });
+
+        run();
+
+        expect(fs.readFileSync.calledOnce, 'read once').to.equal(true);
+        expect(fs.readFileSync.calledWith('index.js'), 'read index.js').to.equal(true);
+
+        expect(grunt.file.write.calledOnce, 'write once').to.equal(true);
+        expect(grunt.file.write.calledWith(path.resolve('index.md'), sinon.match(/\n### index\(\)\n/)), 'add extra heading level').to.equal(true);
+    });    
 });

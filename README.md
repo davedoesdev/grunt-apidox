@@ -41,6 +41,8 @@ Use the `apidox` property in your Grunt config. You can supply the following opt
 
   Use a key with the empty string to insert markdown after the table of contents.
 
+- `extraHeadingLevels` (optional, integer): By default, `apidox` generates level 1 headings for each API entry. Set `extraHeadingLevels` if you want to change this. For example, to generate level 3 headings, set `extraHeadingLevels` to 2.
+
 ## More Examples
 
 Write to a subdirectory:
