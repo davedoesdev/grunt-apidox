@@ -361,7 +361,7 @@ describe('files', function ()
             input: 'index.js',
             sections: {
                 index: '##foo',
-                index2: '##foo2',
+                Index2: '##foo2',
                 '': 'after toc'
             }
         });
@@ -384,7 +384,7 @@ describe('files', function ()
             input: 'index.js',
             sections: {
                 index: '##foo',
-                index2: '##foo2'
+                Index2: '##foo2'
             }
         });
 

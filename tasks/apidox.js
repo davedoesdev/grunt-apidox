@@ -182,7 +182,7 @@ module.exports = function (grunt)
             {
                 if (section)
                 {
-                    re = new RegExp('- <a name="toc_' + section.toLowerCase() + '.*</a>\\[' + section.toLowerCase() + '\\]');
+                    re = new RegExp('- <a name="toc_' + section.toLowerCase() + '.*</a>\\[' + section + '\\]');
                     out = out.replace(re, options.sections[section] + '\n$&');
                 }
             }

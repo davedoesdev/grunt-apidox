@@ -12,8 +12,8 @@ function index()
 }
 
 /**
-index2 function
+Index2 function
 */
-function index2()
+function Index2()
 {
 }
