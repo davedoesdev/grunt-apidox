@@ -37,7 +37,7 @@
     "markdown"
   ],
   "dependencies": {
-    "apidox": "~0.3.4"
+    "apidox": "~0.3.5"
   },
   "devDependencies": {
     "grunt": "~0.4.1",
