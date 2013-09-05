@@ -117,19 +117,19 @@ apidox: {
 
 ## Tests
 
-```javascript
+```shell
 grunt test
 ```
 
 ## Lint
 
-```javascript
+```shell
 grunt lint
 ```
 
 ## Code Coverage
 
-```javascript
+```shell
 grunt coverage
 ```
 
