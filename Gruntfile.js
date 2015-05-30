@@ -6,9 +6,11 @@ module.exports = function (grunt)
     grunt.initConfig(
     {
         jslint: {
-            files: [ 'Gruntfile.js', 'tasks/*.js', 'test/*.js' ],
-            directives: {
-                white: true
+            all: {
+                src: [ 'Gruntfile.js', 'tasks/*.js', 'test/*.js' ],
+                directives: {
+                    white: true
+                }
             }
         },
 
@@ -43,10 +45,10 @@ module.exports = function (grunt)
     grunt.loadNpmTasks('grunt-exec');
     grunt.loadTasks('tasks');
 
-    grunt.registerTask('lint', 'jslint');
+    grunt.registerTask('lint', 'jslint:all');
     grunt.registerTask('test', 'cafemocha');
     grunt.registerTask('docs', 'apidox');
     grunt.registerTask('coverage', ['exec:cover', 'exec:check_cover']);
     grunt.registerTask('coveralls', 'exec:coveralls');
-    grunt.registerTask('default', ['jslint', 'cafemocha']);
+    grunt.registerTask('default', ['lint', 'test']);
 };
