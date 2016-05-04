@@ -249,7 +249,7 @@ module.exports = function (grunt)
                         }
                         else
                         {
-                            input = undefined;
+                            input = '.';
                             cfg.inputText = readFiles(files);
 
                             if (typeof cfg.inputTitle !== 'string')

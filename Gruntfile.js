@@ -5,16 +5,16 @@ module.exports = function (grunt)
 {
     grunt.initConfig(
     {
-        jslint: {
+        jshint: {
             all: {
                 src: [ 'Gruntfile.js', 'tasks/*.js', 'test/*.js' ],
-                directives: {
-                    white: true
+                options: {
+                    esversion: 6
                 }
             }
         },
 
-        cafemocha: {
+        mochaTest: {
             src: 'test/*.js'
         },
 
@@ -24,31 +24,30 @@ module.exports = function (grunt)
             fullSourceDescription: true
         },
 
-        exec: {
+        shell: {
             cover: {
-                cmd: './node_modules/.bin/istanbul cover ./node_modules/.bin/grunt -- test'
+                command: './node_modules/.bin/istanbul cover ./node_modules/.bin/grunt -- test'
             },
 
             check_cover: {
-                cmd: './node_modules/.bin/istanbul check-coverage --statement 100 --branch 100 --function 100 --line 100'
+                command: './node_modules/.bin/istanbul check-coverage --statement 100 --branch 100 --function 100 --line 100'
             },
 
             coveralls: {
-                cmd: 'cat coverage/lcov.info | coveralls'
+                command: 'cat coverage/lcov.info | coveralls'
             }
         }
-
     });
 
-    grunt.loadNpmTasks('grunt-jslint');
-    grunt.loadNpmTasks('grunt-cafe-mocha');
-    grunt.loadNpmTasks('grunt-exec');
+    grunt.loadNpmTasks('grunt-contrib-jshint');
+    grunt.loadNpmTasks('grunt-mocha-test');
+    grunt.loadNpmTasks('grunt-shell');
     grunt.loadTasks('tasks');
 
-    grunt.registerTask('lint', 'jslint:all');
-    grunt.registerTask('test', 'cafemocha');
+    grunt.registerTask('lint', 'jshint:all');
+    grunt.registerTask('test', 'mochaTest');
     grunt.registerTask('docs', 'apidox');
-    grunt.registerTask('coverage', ['exec:cover', 'exec:check_cover']);
-    grunt.registerTask('coveralls', 'exec:coveralls');
+    grunt.registerTask('coverage', ['shell:cover', 'shell:check_cover']);
+    grunt.registerTask('coveralls', 'shell:coveralls');
     grunt.registerTask('default', ['lint', 'test']);
 };
