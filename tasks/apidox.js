@@ -143,8 +143,7 @@ Coveralls page is [here](https://coveralls.io/r/davedoesdev/grunt-apidox).
 "use strict";
 
 var path = require('path'),
-    apidox = require('apidox'),
-    hooker = require('hooker');
+    apidox = require('apidox');
 
 module.exports = function (grunt)
 {
