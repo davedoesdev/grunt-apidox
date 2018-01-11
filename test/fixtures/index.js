@@ -17,3 +17,10 @@ Index2 function
 function Index2()
 {
 }
+
+/*
+Index3 function
+*/
+function index3()
+{
+}

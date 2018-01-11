@@ -444,4 +444,39 @@ describe('files', function ()
         expect(grunt.file.write.calledOnce, 'write once').to.equal(true);
         expect(grunt.file.write.calledWith(path.resolve('index.md'), sinon.match(/\n### index\(\)\n/)), 'add extra heading level').to.equal(true);
     });    
+
+    it('should parse single star comments by default', function ()
+    {
+        grunt.config('apidox',
+        {
+            input: 'index.js'
+        });
+
+        run();
+
+        expect(fs.readFileSync.calledOnce, 'read once').to.equal(true);
+        expect(fs.readFileSync.calledWith('index.js'), 'read index.js').to.equal(true);
+
+        expect(grunt.file.write.calledOnce, 'write once').to.equal(true);
+
+        expect(grunt.file.write.calledWith(path.resolve('index.md'), sinon.match(/Index3 function/)), 'write single star comment').to.equal(true);
+    });
+
+    it('should be able to ignore single star comments', function ()
+    {
+        grunt.config('apidox',
+        {
+            input: 'index.js',
+            doxOptions: { skipSingleStar: true }
+        });
+
+        run();
+
+        expect(fs.readFileSync.calledOnce, 'read once').to.equal(true);
+        expect(fs.readFileSync.calledWith('index.js'), 'read index.js').to.equal(true);
+
+        expect(grunt.file.write.calledOnce, 'write once').to.equal(true);
+
+        expect(grunt.file.write.calledWith(path.resolve('index.md'), sinon.match(/Index3 function/)), 'write single star comment').to.equal(false);
+    });
 });

@@ -143,7 +143,8 @@ Coveralls page is [here](https://coveralls.io/r/davedoesdev/grunt-apidox).
 "use strict";
 
 var path = require('path'),
-    apidox = require('apidox');
+    apidox = require('apidox'),
+    hooker = require('hooker');
 
 module.exports = function (grunt)
 {
@@ -165,7 +166,16 @@ module.exports = function (grunt)
 
         dox.set('input', input);
         dox.set('output', output);
+
+        grunt.util.hooker.hook(require('dox'), 'parseComments', function (js, opts)
+        {
+            opts = Object.assign({}, opts, options.doxOptions);
+            return grunt.util.hooker.filter(this, [js, opts]);
+        });
+
         dox.parse();
+
+        grunt.util.hooker.unhook(require('dox'), 'parseComments');
 
         out = dox.convert();
 
