@@ -20,7 +20,9 @@ function Index2()
 
 /*
 Index3 function
+
+@param {Object} x Just a parameter
 */
-function index3()
+function index3(x)
 {
 }

@@ -47,7 +47,6 @@ describe('files', function ()
 
         run();
 
-        expect(fs.readFileSync.calledOnce, 'read once').to.equal(true);
         expect(fs.readFileSync.calledWith('index.js'), 'read index.js').to.equal(true);
 
         expect(grunt.file.write.calledOnce, 'write once').to.equal(true);
