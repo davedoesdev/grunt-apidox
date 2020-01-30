@@ -39,10 +39,13 @@
     "grunt-contrib-jshint": "^2.1.0",
     "grunt-mocha-test": "^0.13.3",
     "grunt-shell": "^3.0.1",
-    "mocha": "^6.1.4",
-    "sinon": "^7.3.2",
+    "mocha": "^7.0.0",
+    "sinon": "^8.1.1",
     "chai": "^4.2.0",
-    "nyc": "^14.1.1",
-    "coveralls": "^3.0.4"
+    "nyc": "^15.0.0",
+    "coveralls": "^3.0.9"
+  },
+  "peerDependencies": {
+    "grunt": ">=1"
   }
 }

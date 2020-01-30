@@ -13,7 +13,7 @@ var path = require('path'),
 
 describe('files', function ()
 {
-    var sandbox = sinon.sandbox.create();
+    var sandbox;
 
     function run()
     {
@@ -26,6 +26,7 @@ describe('files', function ()
     beforeEach(function (done)
     {
         process.chdir(path.join('test', 'fixtures'));
+        sandbox = sinon.createSandbox();
         sandbox.spy(fs, 'readFileSync');
         sandbox.stub(grunt.file, 'write');
         done();
