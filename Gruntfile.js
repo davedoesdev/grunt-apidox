@@ -26,19 +26,15 @@ module.exports = function (grunt)
 
         shell: {
             cover: {
-                command: "./node_modules/.bin/nyc -x Gruntfile.js -x 'test/**' ./node_modules/.bin/grunt test"
+                command: "npx c8 -x Gruntfile.js -x 'test/**' ./node_modules/.bin/grunt test"
             },
 
             cover_report: {
-                command: './node_modules/.bin/nyc report -r lcov'
+                command: 'npx c8 report -r lcov'
             },
 
             cover_check: {
-                command: './node_modules/.bin/nyc check-coverage --statements 100 --branches 100 --functions 100 --lines 100'
-            },
-
-            coveralls: {
-                command: 'cat coverage/lcov.info | coveralls'
+                command: 'npx c8 check-coverage --statements 100 --branches 100 --functions 100 --lines 100'
             }
         }
     });
@@ -54,6 +50,5 @@ module.exports = function (grunt)
     grunt.registerTask('coverage', ['shell:cover',
                                     'shell:cover_report',
                                     'shell:cover_check']);
-    grunt.registerTask('coveralls', 'shell:coveralls');
     grunt.registerTask('default', ['lint', 'test']);
 };
