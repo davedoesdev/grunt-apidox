@@ -1,6 +1,8 @@
 /*jslint node: true */
 "use strict";
 
+const c8 = "npx c8 -x Gruntfile.js -x 'test/**'";
+
 module.exports = function (grunt)
 {
     grunt.initConfig(
@@ -26,15 +28,15 @@ module.exports = function (grunt)
 
         shell: {
             cover: {
-                command: "npx c8 -x Gruntfile.js -x 'test/**' ./node_modules/.bin/grunt test"
+                command: `${c8} npx grunt test`
             },
 
             cover_report: {
-                command: 'npx c8 report -r lcov'
+                command: `${c8} report -r lcov`
             },
 
             cover_check: {
-                command: 'npx c8 check-coverage --statements 100 --branches 100 --functions 100 --lines 100'
+                command: `${c8} check-coverage --statements 100 --branches 100 --functions 100 --lines 100`
             }
         }
     });
