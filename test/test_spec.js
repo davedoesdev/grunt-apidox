@@ -11,15 +11,22 @@ var path = require('path'),
     fs = require('fs'),
     expect = require('chai').expect;
 
+// get iconv-lite calls to fs.readFileSync out of the way
+require('iconv-lite').getCodec('utf8');
+
 describe('files', function ()
 {
     var sandbox;
+
+    before(function () {
+        grunt.task.loadTasks('./tasks');
+    });
 
     function run()
     {
         var context = { name: 'apidox', nameArgs: 'apidox' };
         /*jslint nomen: true */
-        grunt.task._tasks.apidox.fn.call(context, grunt);
+        grunt.task._tasks.apidox.fn.call(context);
         /*jslint nomen: false */
     }
 

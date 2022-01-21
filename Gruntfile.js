@@ -7,50 +7,33 @@ module.exports = function (grunt)
 {
     grunt.initConfig(
     {
-        jshint: {
-            all: {
-                src: [ 'Gruntfile.js', 'tasks/*.js', 'test/*.js' ],
-                options: {
-                    esversion: 6
-                }
-            }
+        eslint: {
+            target: [ 'Gruntfile.js', 'tasks/*.js', 'test/*.js' ]
         },
 
-        mochaTest: {
-            src: 'test/*.js'
-        },
+        exec: Object.fromEntries(Object.entries({
+            test: 'npx mocha',
+            cover: `${c8} npx grunt test`,
+            cover_report: `${c8} report -r lcov`,
+            cover_check: `${c8} check-coverage --statements 100 --branches 100 --functions 100 --lines 100`
+        }).map(([k, cmd]) => [k, { cmd, stdio: 'inherit' }])),
 
         apidox: {
             input: 'tasks/apidox.js',
             output: 'README.md',
             fullSourceDescription: true
-        },
-
-        shell: {
-            cover: {
-                command: `${c8} npx grunt test`
-            },
-
-            cover_report: {
-                command: `${c8} report -r lcov`
-            },
-
-            cover_check: {
-                command: `${c8} check-coverage --statements 100 --branches 100 --functions 100 --lines 100`
-            }
         }
     });
 
-    grunt.loadNpmTasks('grunt-contrib-jshint');
-    grunt.loadNpmTasks('grunt-mocha-test');
-    grunt.loadNpmTasks('grunt-shell');
+    grunt.loadNpmTasks('grunt-eslint');
+    grunt.loadNpmTasks('grunt-exec');
     grunt.loadTasks('tasks');
 
-    grunt.registerTask('lint', 'jshint:all');
-    grunt.registerTask('test', 'mochaTest');
+    grunt.registerTask('lint', 'eslint');
+    grunt.registerTask('test', 'exec:test');
     grunt.registerTask('docs', 'apidox');
-    grunt.registerTask('coverage', ['shell:cover',
-                                    'shell:cover_report',
-                                    'shell:cover_check']);
+    grunt.registerTask('coverage', ['exec:cover',
+                                    'exec:cover_report',
+                                    'exec:cover_check']);
     grunt.registerTask('default', ['lint', 'test']);
 };
