@@ -20,7 +20,7 @@ jobs:
           node-version: ${{ matrix.node-version }}
 
       - name: Install
-        run: npm ci && npm ls --all
+        run: npm ci && npm audit
 
       - name: Run tests
         run: npx grunt lint test coverage
