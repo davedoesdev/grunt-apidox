@@ -1,7 +1,7 @@
 {
   "name": "grunt-apidox",
   "description": "Grunt task to generate node.js module API markdown using apidox",
-  "version": "2.0.17",
+  "version": "2.0.18",
   "homepage": "https://github.com/davedoesdev/grunt-apidox",
   "author": {
     "name": "David Halls",
@@ -34,13 +34,13 @@
     "apidox": "^2.0.5"
   },
   "devDependencies": {
-    "c8": "^7.11.3",
-    "chai": "^4.3.6",
-    "grunt": "^1.5.3",
-    "grunt-eslint": "^24.0.0",
+    "c8": "^7.13.0",
+    "chai": "^4.3.7",
+    "grunt": "^1.6.1",
+    "grunt-eslint": "^24.0.1",
     "grunt-exec": "^3.0.0",
-    "mocha": "^10.0.0",
-    "sinon": "^14.0.0"
+    "mocha": "^10.2.0",
+    "sinon": "^15.0.3"
   },
   "peerDependencies": {
     "grunt": ">=1"
