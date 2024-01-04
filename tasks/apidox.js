@@ -144,7 +144,22 @@ Coveralls page is [here](https://coveralls.io/r/davedoesdev/grunt-apidox).
 
 var path = require('path'),
     apidox = require('apidox'),
-    lodash = require('lodash');
+    lodash = require('lodash'),
+    jsdoctypeparser = require('jsdoctypeparser'),
+    orig_parse = jsdoctypeparser.parse;
+
+jsdoctypeparser.parse = function (s, opts)
+{
+    let r = orig_parse.call(this, s, opts);
+
+    while (r && r.type === jsdoctypeparser.NodeType.MEMBER)
+    {
+        r.owner.name += '.' + r.name;
+        r = r.owner;
+    }
+
+    return r;
+}
 
 module.exports = function (grunt)
 {

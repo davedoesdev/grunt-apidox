@@ -9,7 +9,11 @@ var path = require('path'),
     sinon = require('sinon'),
     grunt = require('grunt'),
     fs = require('fs'),
-    expect = require('chai').expect;
+    expect;
+
+before(async function () {
+    ({ expect } = await import('chai'));
+});
 
 // get iconv-lite calls to fs.readFileSync out of the way
 require('iconv-lite').getCodec('utf8');
