@@ -8,7 +8,14 @@ module.exports = function (grunt)
     grunt.initConfig(
     {
         eslint: {
-            target: [ 'Gruntfile.js', 'tasks/*.js', 'test/*.js' ]
+            target: [ 'Gruntfile.js', 'tasks/*.js', 'test/*.js' ],
+            options: {
+                overrideConfig: {
+                    parserOptions: {
+                        ecmaVersion: 2020
+                    }
+                }
+            }
         },
 
         exec: Object.fromEntries(Object.entries({
